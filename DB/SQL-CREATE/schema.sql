@@ -1,0 +1,1 @@
+CREATE SCHEMA course_management
