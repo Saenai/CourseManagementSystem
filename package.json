@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "cd vuecli && npm run serve",
-    "init": "cd vuecli && npm install"
+    "start": "cd vue-elementplus && npm run serve",
+    "init": "cd vue-elementplus && npm install"
   }
 }

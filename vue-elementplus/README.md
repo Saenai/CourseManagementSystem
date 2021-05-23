@@ -1,4 +1,4 @@
-# vuecli
+# vue-elementplus
 
 ## Project setup
 ```
