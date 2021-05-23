@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./vue-elementplus/src/*"]
+        }
+    },
+    "include": ["./vue-elementplus/src/**/*", "./vue-elementplus/src/***/**/*"]
+}

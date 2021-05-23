@@ -4,10 +4,16 @@
 实现针对一门的课程管理系统
 B/S架构，Java Web
 
+## to-do
+
+1. 完成一个前端页面与后端数据连携的实例
+2. 对业务正式开发
+
 ## 主要技术栈
 
 - Spring boot
-- Bootstrap
+- ~~Bootstrap~~
+- ElementPlus
 - Mybatis
 - Vue.js
   
