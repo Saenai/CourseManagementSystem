@@ -1,9 +1,9 @@
 <template>
-  <div class="teacherdataanalyse"></div>
+  <div class="teacherDataAnalyse"></div>
 </template>
 
 <script type="text/javascript">
-export default { name: "TeacherDataAnalyse", components: {} };
+export default { name: "DataAnalyse", components: {} };
 </script>
 
 <style lang="stylus" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="teachercourseconfirm"></div>
+  <div class="teacherCourseConfirm"></div>
 </template>
 
 <script type="text/javascript">
