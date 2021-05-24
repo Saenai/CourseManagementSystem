@@ -12,7 +12,11 @@
               label-width="100px"
               class=";oginForm"
             >
-              <el-tabs v-model="activeName" @tab-click="handleClick">
+              <el-tabs
+                type="border-card"
+                v-model="activeName"
+                @tab-click="handleClick"
+              >
                 <el-tab-pane label="学生" name="student"></el-tab-pane>
                 <el-tab-pane label="教师" name="teacher"></el-tab-pane>
                 <el-tab-pane label="管理员" name="admin"></el-tab-pane>
