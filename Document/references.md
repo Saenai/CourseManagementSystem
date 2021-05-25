@@ -33,3 +33,4 @@ https://segmentfault.com/q/1010000015301741
 [处理定义外路径](https://blog.csdn.net/Dawnchen1/article/details/116742166)
 [Vue 与 fetch 的使用](https://blog.csdn.net/baidu_41601048/article/details/83413884)
 [全局状态(Vuex 的替代)](https://v3.cn.vuejs.org/guide/state-management.html#%E4%BB%8E%E9%9B%B6%E6%89%93%E9%80%A0%E7%AE%80%E5%8D%95%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86)
+[chokidar package](https://blog.csdn.net/u012313361/article/details/116518241)

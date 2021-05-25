@@ -83,8 +83,5 @@ export default {
 };
 </script>
 
-<style lang="scss">
-// #loginButton {
-//   width: 64;
-// }
+<style>
 </style>
