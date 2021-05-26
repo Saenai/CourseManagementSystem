@@ -1,27 +1,25 @@
 # Course Management System
 
-课程管理系统
-实现针对一门的课程管理系统
+## 课程管理系统
+
+针对一门的课程管理系统
 B/S 架构，Java Web
 
-## to-do
+---
+
+### to-do
 
 1. sessionStorage
 2. 业务开发
 
-## 主要技术栈
+### Main Stacks
 
-- Spring boot
-- ~~Bootstrap~~
-- ElementPlus
-- Mybatis
-- Vue.js
+[技術](./Document/stacks.md)
 
-## 环境需求
+### Required Circumstance
 
-- JDK 11
-- Maven
-- MySQL
-- Git
-- [IDE]
-- Node.js
+[環境](./Document/circumstance.md)
+
+### References
+
+[参考](./Document/references.md)
