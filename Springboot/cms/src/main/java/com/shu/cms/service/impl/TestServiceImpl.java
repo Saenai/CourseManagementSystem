@@ -1,7 +1,7 @@
 package com.shu.cms.service.impl;
 
 import com.shu.cms.entity.AdminEntity;
-import com.shu.cms.mapper.TestMapper;
+import com.shu.cms.mapper.AdminMapper;
 import com.shu.cms.service.TestService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class TestServiceImpl implements TestService {
     AdminEntity adminEntity;
 
     @Autowired
-    TestMapper testMapper;
+    AdminMapper testMapper;
 
     @Override
     public String getAdminName(String id) {

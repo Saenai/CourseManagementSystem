@@ -6,9 +6,8 @@ B/S 架构，Java Web
 
 ## to-do
 
-1. fetch
-2. sessionStorage
-3. 端页面与后端数据连携的实例
+1. sessionStorage
+2. 业务开发
 
 ## 主要技术栈
 

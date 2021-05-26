@@ -2,8 +2,7 @@
   <div>
     <router-view />
   </div>
-</template>
-
+</template> 
 <script></script>
 
 <style>

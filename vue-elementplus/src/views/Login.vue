@@ -31,16 +31,13 @@
                       v-model="loginFormModel.pw"
                     ></el-input>
                   </el-form-item>
-                  <el-form-item>
-                    <el-button
-                      id="loginButton"
-                      type="primary"
-                      @click="loginFormSubmit('loginFormRef')"
-                      :round="true"
-                      width="64"
-                      >登录</el-button
-                    >
-                  </el-form-item>
+                  <el-button
+                    class="loginButton"
+                    type="primary"
+                    @click="loginFormSubmit('loginFormRef')"
+                    :round="true"
+                    >登录</el-button
+                  >
                 </el-tabs>
               </el-form>
             </el-space>
@@ -52,6 +49,7 @@
 </template>
 
 <script type="text/javascript">
+import GLOBLE from "@/config/global_variable";
 export default {
   name: "LoginPage",
   components: {},
@@ -66,22 +64,41 @@ export default {
         id: [{ required: true, message: "请输入用户名", trigger: "blur" }],
         pw: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
+      api: GLOBLE.apiBaseUrl,
     };
   },
   methods: {
     loginFormSubmit(loginFormRef) {
       this.$refs[loginFormRef].validate((valid) => {
         if (valid) {
-          // alert("submit!");
-        } else {
-          // console.log("error submit!!");
-          return false;
+          if (this.postLoginInformation()) {
+            alert("submit!");
+          } else {
+            console.log("error submit!!");
+            return false;
+          }
         }
       });
+    },
+    postLoginInformation() {
+      // console.log("[here]" + this.api);
+      return fetch(this.api + "/login/validate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.loginFormModel),
+      })
+        .then((res) => res.json())
+        .catch((error) => console.error("Error:", error))
+        .then((response) => {
+          console.log(response);
+        });
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+/deep/ .loginButton {
+  width: 200px;
+}
 </style>
