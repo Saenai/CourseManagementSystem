@@ -4,10 +4,13 @@
 - JavaScript
 - Html
 - CSS
-- Spring boot
-- Bootstrap
+- Node.js
+- Spring Boot
+- ~~Bootstrap~~
 - Maven
 - Mybatis
 - MySQL
 - JDBC
 - lombok
+- Vue.js
+- Element Plus

@@ -19,3 +19,7 @@ git config --replace-all user.name "{}"
 ```powershell
 git config --global core.editor vim
 ```
+
+```powershell
+ssh-keygen
+```
