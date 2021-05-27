@@ -2,6 +2,18 @@
 
 ---
 
+## Error Fix
+
+### Scss pre-loader
+
+未排查出确切的解决方案，按照文档安装{css}-loader 时选择较早版本
+
+### fetch async await
+
+async、await 不能嵌套使用
+async 标记该函数为异步函数，不会阻塞
+await 标记该函数阻塞，未执行完时不会继续推进
+
 ## 目标/要求
 
 1. ~~实现针对一门的课程管理系统~~

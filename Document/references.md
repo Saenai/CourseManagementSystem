@@ -43,3 +43,8 @@
 [后端传入密码在传入数据库前暗文化](https://blog.csdn.net/liangruilz/article/details/104653732/)
 [fetch api](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
 [Java 中对于 String ==和.equals 是不同的](https://www.cnblogs.com/weibanggang/p/9457757.html)
+[:v-deep => :deep()](https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors)
+[表单 Enter 提交](https://blog.csdn.net/asing1elife/article/details/82711366)
+[async, await](https://www.cnblogs.com/robinunix/articles/10900474.html)
+[Vue Cli Document](https://cli.vuejs.org/zh/guide/)
+[Element Plus Document - Component](https://element-plus.gitee.io/#/zh-CN/component/)

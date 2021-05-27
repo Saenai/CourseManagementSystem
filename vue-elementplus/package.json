@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "serve"
+    "start": "npm run serve"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -31,9 +31,13 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.9.0",
     "lodash": "^4.17.21",
+    "node-sass": "^6.0.0",
     "prettier": "^2.2.1",
+    "sass-loader": "^10.2.0",
     "sass-resources-loader": "^2.2.1",
-    "vue-cli-plugin-element-plus": "0.0.13"
+    "style-resources-loader": "^1.4.1",
+    "vue-cli-plugin-element-plus": "0.0.13",
+    "vue-cli-plugin-style-resources-loader": "^0.1.5"
   },
   "eslintConfig": {
     "root": true,

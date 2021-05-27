@@ -5,7 +5,8 @@
         <el-container>
           <el-main>
             <el-space warp direction="vertical" :size="32">
-              <img alt="Vue logo" src="../assets/logo.png" />
+              <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+              <h1>课程管理系统</h1>
               <el-form
                 :model="loginFormModel"
                 status-icon
@@ -34,6 +35,7 @@
                   <el-button
                     class="loginButton"
                     type="primary"
+                    native-type="submit"
                     @click="loginFormSubmit('loginFormRef')"
                     :round="true"
                     >登录</el-button
@@ -69,36 +71,35 @@ export default {
   },
   methods: {
     loginFormSubmit(loginFormRef) {
-      this.$refs[loginFormRef].validate((valid) => {
+      this.$refs[loginFormRef].validate(async (valid) => {
         if (valid) {
-          if (this.postLoginInformation()) {
-            alert("submit!");
+          const response = await fetch(this.api + "/login/validate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(this.loginFormModel),
+          }).then((res) => res.json());
+          if (response == true) {
+            this.$message({
+              message: "欢迎， " + this.loginFormModel.id + " ！",
+              type: "success",
+            });
           } else {
-            console.log("error submit!!");
+            this.$message({
+              message: "用户名或者密码错误",
+              type: "error",
+            });
+            this.loginFormModel.pw = null;
             return false;
           }
         }
       });
     },
-    postLoginInformation() {
-      // console.log("[here]" + this.api);
-      return fetch(this.api + "/login/validate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.loginFormModel),
-      })
-        .then((res) => res.json())
-        .catch((error) => console.error("Error:", error))
-        .then((response) => {
-          console.log(response);
-        });
-    },
   },
 };
 </script>
 
-<style scoped>
-/deep/ .loginButton {
+<style lang="scss" scoped>
+:deep(.loginButton) {
   width: 200px;
 }
 </style>
