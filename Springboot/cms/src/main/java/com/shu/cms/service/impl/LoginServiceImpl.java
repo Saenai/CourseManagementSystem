@@ -1,5 +1,6 @@
 package com.shu.cms.service.impl;
 
+import com.shu.cms.entity.AdminEntity;
 import com.shu.cms.mapper.AdminMapper;
 import com.shu.cms.model.LoginModel;
 import com.shu.cms.service.LoginService;
@@ -15,13 +16,27 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean ValidateUser(LoginModel loginModel) {
-        if (adminMapper.selectEntityById(loginModel.getId()) == null)
-            return false;
+        switch (loginModel.getRole()) {
+            case "admin":
 
-        if (loginModel.encryptedPw().equals(adminMapper.selectEntityById(loginModel.getId()).getPw())) {
-            return true;
-        } else
-            return false;
+                if (adminMapper.selectEntityById(loginModel.getId()) == null)
+                    return false;
+
+                else if (loginModel.encryptedPw().equals(adminMapper.selectEntityById(loginModel.getId()).getPw()))
+                    return true;
+
+                break;
+
+            default:
+                break;
+        }
+        return false;
+
+    }
+
+    @Override
+    public AdminEntity GetUserEntity(LoginModel loginModel) {
+        return adminMapper.selectEntityById(loginModel.getId());
     }
 
 }

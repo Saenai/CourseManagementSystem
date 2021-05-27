@@ -24,12 +24,16 @@
                   <el-tab-pane label="教师" name="teacher"></el-tab-pane>
                   <el-tab-pane label="管理员" name="admin"></el-tab-pane>
                   <el-form-item label="用户名" prop="id">
-                    <el-input v-model="loginFormModel.id"></el-input>
+                    <el-input
+                      v-model="loginFormModel.id"
+                      prefix-icon="el-icon-user"
+                    ></el-input>
                   </el-form-item>
                   <el-form-item label="密码" prop="pw">
                     <el-input
                       type="password"
                       v-model="loginFormModel.pw"
+                      prefix-icon="el-icon-lock"
                     ></el-input>
                   </el-form-item>
                   <el-button
@@ -70,22 +74,36 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["changeLogin"]),
     loginFormSubmit(loginFormRef) {
       this.$refs[loginFormRef].validate(async (valid) => {
         if (valid) {
-          const response = await fetch(this.api + "/login/validate", {
+          // 検証する
+          const validateResponse = await fetch(this.api + "/login/validate", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(this.loginFormModel),
           }).then((res) => res.json());
-          if (response == true) {
+          // 検証した
+          if (validateResponse.flag == true) {
+            this.changeLogin({ Authorization: validateResponse.token });
+            //セッションにログインデータを
+            //   const getUserResponse=await fetch(this.api + "/login/getuser", {
+            //   method: "POST",
+            //   headers: { "Content-Type": "application/json" },
+            //   body: JSON.stringify(this.loginFormModel),
+            // }).then((res) => res.json());
+            // 対応を示す
             this.$message({
-              message: "欢迎， " + this.loginFormModel.id + " ！",
+              message: "欢迎，  ！",
               type: "success",
             });
+
+            // redirect to selected role's index page
+            this.$router.push("/" + this.loginFormModel.role + "/index");
           } else {
             this.$message({
-              message: "用户名或者密码错误",
+              message: "用户名或密码错误。",
               type: "error",
             });
             this.loginFormModel.pw = null;

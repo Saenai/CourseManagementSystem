@@ -25,4 +25,19 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.path === "/login") {
+    next();
+  } else {
+    let token = sessionStorage.getItem("Authorization");
+
+    if (token === "null" || token === "") {
+      next("/login");
+    } else {
+      next();
+    }
+  }
+});
+
 export default router;

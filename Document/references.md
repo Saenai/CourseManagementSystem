@@ -48,3 +48,6 @@
 [async, await](https://www.cnblogs.com/robinunix/articles/10900474.html)
 [Vue Cli Document](https://cli.vuejs.org/zh/guide/)
 [Element Plus Document - Component](https://element-plus.gitee.io/#/zh-CN/component/)
+[Token](https://www.jianshu.com/p/24825a2683e6)
+[Token with Vue](https://www.cnblogs.com/web-record/p/9876916.html)
+[fetch with token for headers](https://www.cnblogs.com/winyh/p/7515011.html)
