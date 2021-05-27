@@ -22,4 +22,7 @@ git config --global core.editor vim
 
 ```powershell
 ssh-keygen
+ssh-agent
+net ssh-agent start
+ssh-add
 ```
