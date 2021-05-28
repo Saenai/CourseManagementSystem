@@ -1,3 +1,4 @@
+const resolve = (dir) => require("path").join(__dirname, dir);
 module.exports = {
   lintOnSave: false,
 
@@ -16,9 +17,24 @@ module.exports = {
   },
   configureWebpack: (config) => {
     if (process.env.NODE_ENV === "production") {
+      return {
+        resolve: {
+          alias: {
+            "@": resolve("src"), //配置src目录的别名
+            v: resolve("src/views"),
+          }, //配置公共组件目录的别名
+        },
+      };
       // 为生产环境修改配置...
     } else {
-      // 为开发环境修改配置...
+      return {
+        resolve: {
+          alias: {
+            "@": resolve("src"), //配置src目录的别名
+            v: resolve("src/views"),
+          }, //配置公共组件目录的别名
+        },
+      };
     }
   },
 };

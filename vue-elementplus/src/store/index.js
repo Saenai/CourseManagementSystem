@@ -9,7 +9,11 @@ export default createStore({
     name: sessionStorage.getItem("name") ? sessionStorage.getItem("name") : "",
     role: sessionStorage.getItem("role") ? sessionStorage.getItem("role") : "",
   },
-  getters: {},
+  getters: {
+    getStore(state) {
+      return state;
+    },
+  },
   mutations: {
     // 修改token，并将token存入sessionStorage
     changeLogin(state, user) {

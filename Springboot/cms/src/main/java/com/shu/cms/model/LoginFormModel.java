@@ -1,6 +1,6 @@
 package com.shu.cms.model;
 
-public class LoginModel {
+public class LoginFormModel {
     String id;
     String pw;
     String role;
@@ -30,9 +30,14 @@ public class LoginModel {
     }
 
     public String encryptedPw() {
-
         // TODO
+        // for test
+        if (id.equals("zs") || id.equals("ls"))
+            return pw;
 
-        return pw;
+        // encrypt pw
+        String encryptedPw = pw;
+
+        return encryptedPw;
     }
 }

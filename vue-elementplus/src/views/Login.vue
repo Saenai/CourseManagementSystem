@@ -56,6 +56,7 @@
 
 <script type="text/javascript">
 import GLOBLE from "@/config/global_variable";
+import { mapMutations, mapGetters } from "vuex";
 export default {
   name: "LoginPage",
   components: {},
@@ -75,6 +76,7 @@ export default {
   },
   methods: {
     ...mapMutations(["changeLogin"]),
+    ...mapGetters(["getStore"]),
     loginFormSubmit(loginFormRef) {
       this.$refs[loginFormRef].validate(async (valid) => {
         if (valid) {
@@ -86,7 +88,12 @@ export default {
           }).then((res) => res.json());
           // 検証した
           if (validateResponse.flag == true) {
-            this.changeLogin({ Authorization: validateResponse.token });
+            this.changeLogin({
+              Authorization: validateResponse.token,
+              id: validateResponse.id,
+              name: validateResponse.name,
+              role: validateResponse.role,
+            });
             //セッションにログインデータを
             //   const getUserResponse=await fetch(this.api + "/login/getuser", {
             //   method: "POST",
@@ -100,10 +107,10 @@ export default {
             });
 
             // redirect to selected role's index page
-            this.$router.push("/" + this.loginFormModel.role + "/index");
+            this.$router.push("/" + this.getStore().role);
           } else {
             this.$message({
-              message: "用户名或密码错误。",
+              message: "用户名、身份或密码错误。",
               type: "error",
             });
             this.loginFormModel.pw = null;

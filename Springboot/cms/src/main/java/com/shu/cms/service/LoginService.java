@@ -1,10 +1,13 @@
 package com.shu.cms.service;
 
 import com.shu.cms.entity.AdminEntity;
-import com.shu.cms.model.LoginModel;
+import com.shu.cms.model.LoginFormModel;
+import com.shu.cms.model.LoginValidateResponseModel;
 
 public interface LoginService {
-    boolean ValidateUser(LoginModel loginModel);
+    LoginValidateResponseModel Validate(LoginFormModel loginModel);
 
-    AdminEntity GetUserEntity(LoginModel loginModel);
+    AdminEntity GetUserEntity(LoginFormModel loginModel);
+
+    boolean test();
 }
