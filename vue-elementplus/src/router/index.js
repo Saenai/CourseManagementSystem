@@ -5,10 +5,6 @@ const routes = [
     redirect: "/login",
   },
   {
-    path: "/:catchAll(.*)",
-    redirect: "/error",
-  },
-  {
     path: "/error",
     name: "ErrorPage",
     component: () => import("v/Error.vue"),
@@ -18,18 +14,23 @@ const routes = [
     name: "LoginPage",
     component: () => import("v/Login.vue"),
   },
-  // {
-  //   path: "/Admin",
-  //   name: "AdminIndex",
-  //   component: () => import("v/Admin/index.vue"),
-  //   children: [
-  //     {
-  //       path: "/admin/AdminsManagement",
-  //       name: "AdminsManagement",
-  //       component: () => import("v/Admin/AdminsManagement.vue"),
-  //     },
-  //   ],
-  // },
+  {
+    path: "/admin",
+    name: "AdminIndex",
+    component: () => import("v/Admin/index.vue"),
+    children: [
+      {
+        path: "/admin/home",
+        name: "AdminHome",
+        component: () => import("v/Admin/Home.vue"),
+      },
+      {
+        path: "/admin/adminsmanagement",
+        name: "AdminAdminsManagement",
+        component: () => import("v/Admin/AdminsManagement.vue"),
+      },
+    ],
+  },
   // {
   //   path: "/student",
   //   name: "StudentIndex",
@@ -75,32 +76,54 @@ const router = createRouter({
 
 // 以下のMethodは画面を示す前に、ユーザーを検証し、使用できるかを確認する
 router.beforeEach((to, from, next) => {
-  if (to.path === "/error") {
-    next();
-  } else if (to.path === "/login") {
-    // first go login
-    next();
-  }
-  // cant use system without login or token
-  else if (
-    sessionStorage.getItem("Authorization") === "null" ||
-    sessionStorage.getItem("Authorization") === ""
-  ) {
-    next("/login");
-  }
-  // cant get page beyond role
-  else if (
-    (to.path === "/admin" && sessionStorage.getItem("role") === "admin") ||
-    (to.path === "/teacher" && sessionStorage.getItem("role") === "teacher") ||
-    (to.path === "/student" && sessionStorage.getItem("role") === "student")
-  ) {
-    next();
+  let isNotAuthenticated =
+    sessionStorage.getItem("Authorization") === null ||
+    sessionStorage.getItem("Authorization") === "" ||
+    sessionStorage.getItem("Authorization") === "null";
+  let err = sessionStorage.getItem("error_code");
+  let role = sessionStorage.getItem("role");
+  let dist = to.path;
+
+  console.log(
+    sessionStorage.getItem("Authorization"),
+    sessionStorage.getItem("Authorization") === null,
+    isNotAuthenticated,
+    err,
+    role,
+    dist
+  );
+
+  if (dist === "/error") {
+    if (err === null) {
+      next("/login");
+    } else next();
+  } else if (!isNotAuthenticated) {
+    if (dist === "/login") {
+      next("/" + role);
+    } else if (
+      ((dist === "/admin" || dist.indexOf("/admin/") != -1) &&
+        role === "admin") ||
+      ((dist === "/teacher" || dist.indexOf("/teacher/") != -1) &&
+        role === "teacher") ||
+      ((dist === "/student" || dist.indexOf("/student/") != -1) &&
+        role === "student")
+    ) {
+      next();
+    } else {
+      sessionStorage.setItem("error_code", "E02");
+      next("/error");
+    }
+  } else if (isNotAuthenticated) {
+    if (dist === "/login") {
+      next();
+    } else {
+      next("/login");
+    }
   }
   //E0001: Wrong Role to access current page.
   else {
-    sessionStorage.setItem("error_code", "E0001");
-    next("/Error");
+    sessionStorage.setItem("error_code", "E01");
+    next("/error");
   }
 });
-
 export default router;

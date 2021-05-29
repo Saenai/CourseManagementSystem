@@ -32,6 +32,7 @@ public class LoginController {
         return loginService.Validate(loginModel);
     }
 
+    // Test fetch requestbody.headers
     @GetMapping(value = "/test")
     @ResponseStatus(HttpStatus.OK)
     public boolean test(@RequestHeader("Authorization") String token) {

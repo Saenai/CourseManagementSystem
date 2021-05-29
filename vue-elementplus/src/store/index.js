@@ -26,9 +26,15 @@ export default createStore({
       sessionStorage.setItem("name", user.name);
       sessionStorage.setItem("role", user.role);
     },
-    clearLogin() {
-      sessionStorage.clear();
-      state.clear();
+    clearLogin(state) {
+      sessionStorage.removeItem("Authorization");
+      sessionStorage.removeItem("id");
+      sessionStorage.removeItem("name");
+      sessionStorage.removeItem("role");
+      state.Authorization = "";
+      state.id = "";
+      state.name = "";
+      state.role = "";
     },
   },
   actions: {},

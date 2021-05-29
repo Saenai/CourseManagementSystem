@@ -1,6 +1,8 @@
 <template>
   <div class="errorpage">
     <h1>Error Page</h1>
+    <h2>{{ error_code }}</h2>
+    <el-button @click="close()">关闭</el-button>
     <!-- Use for test fetch with Authorization Headers -->
     <!-- <el-button class="loginButton" type="primary" @click="testFetch()"
       >Test Fetch</el-button
@@ -10,17 +12,22 @@
 
 <script type="text/javascript">
 import GLOBAL from "@/config/global_variable.js";
-import { mapMutations, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "ErrorPage",
   data() {
     return {
       api: GLOBAL.apiBaseUrl,
+      error_code: sessionStorage.getItem("error_code"),
     };
   },
   components: {},
   methods: {
     ...mapGetters(["getStore"]),
+    close() {
+      sessionStorage.removeItem("error_code");
+      this.$router.push("/login");
+    },
     // Use for test fetch with Authorization Headers
     // async testFetch() {
     //   console.log(this.getStore().Authorization);

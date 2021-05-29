@@ -57,3 +57,6 @@
 [@RequestHeader @Spring Boot](https://www.cnblogs.com/xiaomaomao/p/14289669.html)
 [Webpack alias](https://www.jianshu.com/p/e4716e5bc8bb?tdsourcetag=s_pcqq_aiomsg)
 [webpack alias with vue-cli](https://blog.csdn.net/bowen11233/article/details/90268016)
+[VSCode Snippets 使用$](https://stackoverflow.com/questions/3215705/escaping-the-character-in-snippets)
+[JS 判断字符串包含关系](https://www.cnblogs.com/rxbook/p/11820720.html)
+[Vue 页面启动挂载方法](https://blog.csdn.net/adoreen/article/details/82984192)

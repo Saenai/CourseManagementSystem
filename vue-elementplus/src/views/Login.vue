@@ -102,7 +102,12 @@ export default {
             // }).then((res) => res.json());
             // 対応を示す
             this.$message({
-              message: "欢迎，" + this.getStore().name + " ！",
+              message:
+                "欢迎，[" +
+                this.getStore().role +
+                "]" +
+                this.getStore().name +
+                " ！",
               type: "success",
             });
 
