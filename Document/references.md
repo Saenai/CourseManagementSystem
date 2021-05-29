@@ -60,3 +60,4 @@
 [VSCode Snippets 使用$](https://stackoverflow.com/questions/3215705/escaping-the-character-in-snippets)
 [JS 判断字符串包含关系](https://www.cnblogs.com/rxbook/p/11820720.html)
 [Vue 页面启动挂载方法](https://blog.csdn.net/adoreen/article/details/82984192)
+[el-menu with router](https://blog.csdn.net/qq_31126175/article/details/81875468)

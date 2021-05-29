@@ -8,6 +8,11 @@
 <style>
 body {
   margin: 0;
+  height: 100%;
+}
+
+.el-container {
+  height: 100%;
 }
 
 #app {
@@ -23,5 +28,12 @@ body {
   width: 100%;
   position: fixed;
   background-color: #f5f5f5;
+}
+
+#app > div {
+  height: 100%;
+}
+#app > div > div {
+  height: 100%;
 }
 </style>
