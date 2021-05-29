@@ -71,7 +71,7 @@ export default {
         id: [{ required: true, message: "请输入用户名", trigger: "blur" }],
         pw: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
-      api: GLOBLE.apiBaseUrl,
+      api: GLOBLE.apiBaseUrl + "/login",
     };
   },
   methods: {
@@ -81,7 +81,7 @@ export default {
       this.$refs[loginFormRef].validate(async (valid) => {
         if (valid) {
           // 検証する
-          const validateResponse = await fetch(this.api + "/login/validate", {
+          const validateResponse = await fetch(this.api + "/validate", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(this.loginFormModel),
@@ -102,7 +102,7 @@ export default {
             // }).then((res) => res.json());
             // 対応を示す
             this.$message({
-              message: "欢迎，  ！",
+              message: "欢迎，" + this.getStore().name + " ！",
               type: "success",
             });
 

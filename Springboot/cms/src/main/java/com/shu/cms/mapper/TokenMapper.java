@@ -12,5 +12,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface TokenMapper {
     TokenEntity selectEntityToken(String token);
 
-    Void insertEntity(TokenEntity tokenEntity);
+    int insertEntity(TokenEntity tokenEntity);
 }

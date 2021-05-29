@@ -1,6 +1,6 @@
-CREATE TABLE admin(
-    id VARCHAR(255) NOT NULL,
-    name VARCHAR(255),
-    pw VARCHAR(255),
-    PRIMARY KEY(id)
+CREATE TABLE token(
+    token VARCHAR(255) NOT NULL,
+    id VARCHAR(255),
+    role VARCHAR(255),
+    PRIMARY KEY(token)
 )
