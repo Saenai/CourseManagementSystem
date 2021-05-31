@@ -27,7 +27,7 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background-color: #f5f5f5;
+  background-color: #dcdfe6;
 }
 
 #app > div {

@@ -25,9 +25,9 @@ const routes = [
         component: () => import("v/Admin/Home.vue"),
       },
       {
-        path: "/admin/adminsmanagement",
-        name: "AdminAdminsManagement",
-        component: () => import("v/Admin/AdminsManagement.vue"),
+        path: "/admin/adminsmanage",
+        name: "AdminAdminsManage",
+        component: () => import("v/Admin/AdminsManage.vue"),
       },
     ],
   },

@@ -2,9 +2,9 @@
   <el-row>
     <el-col :span="24">
       <el-container>
-        <el-header class="indexHeader">
+        <el-header id="indexHeader">
           <h3 id="headerLabel">
-            <i class="el-icon-s-platform"></i>课程管理系统 @管理员
+            <i class="el-icon-s-platform"></i>课程管理系统
           </h3>
           <div id="userInfo">
             <i class="el-icon-user-solid"></i>
@@ -15,29 +15,23 @@
         </el-header>
 
         <el-container>
-          <el-aside width="200px"
-            ><h5>Content</h5>
-            <el-menu
-              default-active="1"
-              class="el-menu-vertical-demo"
-              @open="handleOpen"
-              @close="handleClose"
-              router
-            >
+          <el-aside id="indexAside" width="200px">
+            <!-- <h5>Content</h5> -->
+            <el-menu default-active="1" class="el-menu-vertical-demo" router>
               <el-menu-item :route="menuRoutes[0]" index="1">
-                <i class="el-icon-menu"></i>
+                <i class="el-icon-s-home"></i>
                 <template #title>Home</template>
               </el-menu-item>
               <el-menu-item :route="menuRoutes[1]" index="2">
-                <i class="el-icon-document"></i>
+                <i class="el-icon-s-custom"></i>
                 <template #title>管理员管理</template>
               </el-menu-item>
               <el-menu-item :route="menuRoutes[2]" index="3">
-                <i class="el-icon-setting"></i>
+                <i class="el-icon-user-solid"></i>
                 <template #title>教师管理</template>
               </el-menu-item>
               <el-menu-item :route="menuRoutes[3]" index="4">
-                <i class="el-icon-setting"></i>
+                <i class="el-icon-user"></i>
                 <template #title>学生管理</template>
               </el-menu-item>
             </el-menu></el-aside
@@ -64,9 +58,9 @@ export default {
       api: GLOBAL.apiBaseUrl,
       menuRoutes: {
         0: "/admin/home",
-        1: "/admin/adminsmanagement",
-        2: "/admin/studentsmanagement",
-        3: "/admin/teachersmanagement",
+        1: "/admin/adminsmanage",
+        2: "/admin/studentsmanage",
+        3: "/admin/teachersmanage",
       },
     };
   },
@@ -79,8 +73,6 @@ export default {
       this.clearLogin();
       this.$router.push("/");
     },
-    handleOpen(key, keyPath) {},
-    handleClose(key, keyPath) {},
   },
 };
 </script>
@@ -92,10 +84,6 @@ export default {
   vertical-align: center;
   float: left;
   margin: 0;
-}
-:deep(.indexHeader) {
-  background-color: #ffffff;
-  line-height: 60px;
 }
 
 :deep(#userInfo) {
@@ -109,10 +97,29 @@ export default {
   height: 100%;
 }
 
-:deep(.el-aside) {
+:deep(#indexAside) {
   background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
 }
 :deep(.el-menu) {
   text-align: left;
+}
+:deep(#indexHeader) {
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  background-color: #409eff;
+  line-height: 60px;
+}
+:deep(#headerLabel) {
+  color: #ffffff;
+}
+:deep(#userInfo) {
+  color: #ffffff;
+}
+:deep(.el-header .el-button) {
+  color: #e0e0e0;
+}
+:deep(.el-header .el-button:hover) {
+  color: #ffffff;
 }
 </style>

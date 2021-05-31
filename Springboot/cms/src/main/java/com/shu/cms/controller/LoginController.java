@@ -36,8 +36,6 @@ public class LoginController {
     @GetMapping(value = "/test")
     @ResponseStatus(HttpStatus.OK)
     public boolean test(@RequestHeader("Authorization") String token) {
-        System.out.println("********************" + token);
-        System.out.println(tokenService.TokenVerify(token));
         return tokenService.TokenVerify(token);
     }
 }

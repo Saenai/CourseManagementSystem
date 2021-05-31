@@ -11,4 +11,11 @@
         </where>
     </select>
 
+    <select id="selectEntity" resultType="com.shu.cms.entity.AdminEntity">
+        SELECT * FROM course_management.admin
+    </select>
+
+    <insert id="insertEntity" parameterType="com.shu.cms.entity.AdminEntity">
+        INSERT INTO course_management.admin VALUES(#{id},#{name},#{pw})
+    </insert>
 </mapper>

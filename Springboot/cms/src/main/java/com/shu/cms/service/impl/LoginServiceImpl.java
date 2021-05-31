@@ -35,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
 
                 else {
                     AdminEntity adminEntity = adminMapper.selectEntityById(loginModel.getId());
-                    if (loginModel.encryptedPw().equals(adminEntity.getPw())) {
+                    if (loginModel.getPw().equals(adminEntity.getPw())) {
                         // create token by session
                         String token = tokenService.TokenCreate(loginModel.getId(), loginModel.getRole());
                         // set token

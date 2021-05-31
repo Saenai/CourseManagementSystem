@@ -29,15 +29,4 @@ public class LoginFormModel {
         this.role = role;
     }
 
-    public String encryptedPw() {
-        // TODO
-        // for test
-        if (id.equals("zs") || id.equals("ls"))
-            return pw;
-
-        // encrypt pw
-        String encryptedPw = pw;
-
-        return encryptedPw;
-    }
 }

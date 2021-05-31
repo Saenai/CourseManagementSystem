@@ -4,6 +4,9 @@ package com.shu.cms.entity;
 *   @Author： Saenai
 */
 
+import com.shu.cms.service.EncryptService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -14,6 +17,8 @@ public class AdminEntity {
     private String id;
     private String name;
     private String pw;
+    @Autowired
+    EncryptService encryptService;
 
     public String getId() {
         return this.id;
@@ -31,7 +36,18 @@ public class AdminEntity {
         this.name = name;
     }
 
+    // public String getPw() {
+    // return this.pw;
+    // }
+
     public String getPw() {
+        // System.out.println("A" + this.pw);
+        // if (this.id.equals("zs")==false || this.id.equals("ls") == false ||
+        // this.id.equals("ww"))==false {
+        // this.pw = encryptService.decrypt(this.pw);
+        // }
+        // ;
+        // System.out.println("B" + this.pw);
         return this.pw;
     }
 

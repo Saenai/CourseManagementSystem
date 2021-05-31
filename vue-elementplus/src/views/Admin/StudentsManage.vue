@@ -4,7 +4,7 @@
 import GLOBAL from "@/config/global_variable";
 import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
-  name: "FileDownload",
+  name: "AdminStudentsManage",
   components: {},
   data() {
     return { state: this.$store.state, api: GLOBAL.apiBaseUrl };

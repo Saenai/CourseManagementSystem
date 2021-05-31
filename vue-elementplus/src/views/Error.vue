@@ -26,7 +26,7 @@ export default {
     ...mapGetters(["getStore"]),
     close() {
       sessionStorage.removeItem("error_code");
-      this.$router.push("/login");
+      this.$router.push("/");
     },
     // Use for test fetch with Authorization Headers
     // async testFetch() {

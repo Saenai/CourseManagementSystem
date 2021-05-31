@@ -112,7 +112,7 @@ export default {
             });
 
             // redirect to selected role's index page
-            this.$router.push("/");
+            this.$router.push("/" + this.getStore().role);
           } else {
             this.$message({
               message: "用户名、身份或密码错误。",

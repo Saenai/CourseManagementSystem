@@ -4,7 +4,7 @@
 import GLOBAL from "@/config/global_variable";
 import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
-  name: "NameForRouter",
+  name: "AdminTeachersManage",
   components: {},
   data() {
     return { state: this.$store.state, api: GLOBAL.apiBaseUrl };
