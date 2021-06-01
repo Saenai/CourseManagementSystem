@@ -45,6 +45,7 @@ public class TokenServiceImpl implements TokenService {
             Algorithm algorithm = Algorithm.HMAC256(GlobalVariable.TOKEN_KEY);
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
+            System.out.println(jwt);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

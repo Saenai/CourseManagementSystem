@@ -8,9 +8,11 @@ import com.shu.cms.service.AdminService;
 import com.shu.cms.service.TokenService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,4 +47,27 @@ public class AdminController {
             throw new DatabaseException();
         }
     };
+
+    @PutMapping("/admins")
+    @ResponseStatus(HttpStatus.OK)
+    public int PutAdmins(@RequestHeader("Authorization") String token, @RequestBody AdminEntity adminEntity)
+            throws DatabaseException {
+        if (tokenService.TokenVerify(token) == true) {
+            return adminService.updateAdmin(adminEntity);
+        } else {
+            throw new DatabaseException();
+        }
+    };
+
+    @PostMapping("/admins/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public int DeleteAdmins(@RequestHeader("Authorization") String token, @RequestBody String id)
+            throws DatabaseException {
+        if (tokenService.TokenVerify(token) == true) {
+            return adminService.deleteAdmin(id);
+        } else {
+            throw new DatabaseException();
+        }
+    };
+
 }

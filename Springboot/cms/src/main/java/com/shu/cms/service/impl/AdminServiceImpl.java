@@ -36,4 +36,16 @@ public class AdminServiceImpl implements AdminService {
 
     }
 
+    @Override
+    public int updateAdmin(AdminEntity adminEntity) {
+        adminEntity.setPw(encryptService.encrypt(adminEntity.getPw()));
+        return adminMapper.updateEntity(adminEntity);
+    }
+
+    @Override
+    public int deleteAdmin(String id) {
+        System.out.println("**********************" + id);
+        return adminMapper.deleteEntityById(id);
+    }
+
 }

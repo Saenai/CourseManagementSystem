@@ -2,6 +2,11 @@
   <el-container>
     <el-main id="pageMain">
       <el-table stripe :data="tableData" style="width: 100%" height="100%">
+        <el-table-column label="No." width="48px">
+          <template #default="scope">
+            <span>{{ scope.$index }}</span>
+          </template>
+        </el-table-column>
         <el-table-column label="ID">
           <template #default="scope">
             <span>{{ scope.row.id }}</span>
@@ -58,17 +63,48 @@
           <el-input v-model="addFormModel.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pw">
-          <el-input
-            v-model.number="addFormModel.pw"
-            autocomplete="off"
-          ></el-input>
+          <el-input v-model="addFormModel.pw" autocomplete="off"></el-input>
         </el-form-item> </el-form
     ></span>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button @click="handleClose()">取 消</el-button>
         <el-button type="primary" @click="submitForm('addFormRef')"
           >确 定</el-button
+        >
+      </span>
+    </template>
+  </el-dialog>
+  <!-- Edit Dialog -->
+  <el-dialog
+    title="编辑用户"
+    v-model="dialogEditVisible"
+    width="512px"
+    :before-close="handleEditClose"
+  >
+    <span
+      ><el-form
+        :model="addFormModel"
+        status-icon
+        :rules="rules1"
+        ref="editFormRef"
+        label-width="50px"
+      >
+        <el-form-item label="ID" prop="id">
+          <el-input v-model="editFormModel.id" :disabled="true">></el-input>
+        </el-form-item>
+        <el-form-item label="姓名" prop="name">
+          <el-input v-model="editFormModel.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="pw">
+          <el-input v-model="editFormModel.pw" autocomplete="off"></el-input>
+        </el-form-item> </el-form
+    ></span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="handleEditClose()">取 消</el-button>
+        <el-button type="primary" @click="submitEditForm('editFormRef')"
+          >编 辑</el-button
         >
       </span>
     </template>
@@ -87,12 +123,18 @@ export default {
       api: GLOBAL.apiBaseUrl,
       tableData: [{}],
       dialogVisible: false,
+      dialogEditVisible: false,
       addFormModel: { id: "", name: "", pw: "" },
       rules: {
         id: [{ required: true, message: "ID是必填项", trigger: "blur" }],
-        name: [{ trigger: "blur" }],
-        pw: [{ trigger: "blur" }],
+        name: [{}],
+        pw: [{}],
       },
+      rules1: {
+        name: [{}],
+        pw: [{}],
+      },
+      editFormModel: { id: "", name: "", pw: "" },
     };
   },
   mounted() {
@@ -114,18 +156,56 @@ export default {
       this.tableData = Response;
     },
     handleEdit(index, row) {
-      console.log(index, row);
+      this.editFormModel.id = row.id;
+      this.editFormModel.name = row.name;
+      this.editFormModel.pw = row.pw;
+      this.dialogEditVisible = true;
     },
     handleDelete(index, row) {
-      console.log(index, row);
+      this.$confirm("确认删除？")
+        .then(async () => {
+          const Response = await fetch(this.api + "/admin/admins/delete", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: this.getStore().Authorization,
+            },
+            body: row.id,
+          }).then((res) => res.json());
+          console.log("Response:", Response);
+          if (Response > 0) {
+            this.$message({
+              message: "数据删除成功",
+              type: "success",
+            });
+          } else {
+            this.$message({
+              message: "数据删除失败",
+              type: "error",
+            });
+          }
+          this.getTableData();
+        })
+        .catch(() => {});
     },
     handleClose(done) {
       this.$confirm("确认关闭？")
-        .then((_) => {
+        .then(() => {
           this.$refs["addFormRef"].resetFields();
+          this.dialogVisible = false;
           done();
         })
-        .catch((_) => {});
+        .catch(() => {});
+    },
+    handleEditClose(done) {
+      this.$confirm("确认关闭？")
+        .then(() => {
+          this.$refs["editFormRef"].resetFields();
+          this.editFormModel = { id: "", name: "", pw: "" };
+          this.dialogEditVisible = false;
+          done();
+        })
+        .catch(() => {});
     },
     submitForm(formRef) {
       this.$refs[formRef].validate(async (valid) => {
@@ -149,6 +229,39 @@ export default {
           } else {
             this.$message({
               message: "数据添加失败",
+              type: "error",
+            });
+          }
+          this.getTableData();
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    submitEditForm(formRef) {
+      this.$refs[formRef].validate(async (valid) => {
+        if (valid) {
+          const Response = await fetch(this.api + "/admin/admins", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: this.getStore().Authorization,
+            },
+            body: JSON.stringify(this.editFormModel),
+          }).then((res) => res.json());
+          this.dialogEditVisible = false;
+          this.$refs["editFormRef"].resetFields();
+          this.editFormModel = { id: "", name: "", pw: "" };
+          //Insertが成功すると、returnは
+          if (Response > 0) {
+            this.$message({
+              message: "数据修改成功",
+              type: "success",
+            });
+          } else {
+            this.$message({
+              message: "数据修改失败",
               type: "error",
             });
           }

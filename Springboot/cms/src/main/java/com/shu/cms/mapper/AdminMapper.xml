@@ -18,4 +18,16 @@
     <insert id="insertEntity" parameterType="com.shu.cms.entity.AdminEntity">
         INSERT INTO course_management.admin VALUES(#{id},#{name},#{pw})
     </insert>
+
+    <update id="updateEntity" parameterType="com.shu.cms.entity.AdminEntity">
+        UPDATE course_management.admin SET name=#{name},pw=#{pw}
+        <where>
+        id = #{id}
+        </where>
+    </update>
+
+    <delete id="deleteEntityById">
+        DELETE FROM course_management.admin WHERE id = #{id}
+    </delete>
+
 </mapper>

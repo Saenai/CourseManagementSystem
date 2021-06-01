@@ -8,4 +8,8 @@ public interface AdminService {
     List<AdminEntity> getAdmins();
 
     int insertAdmin(AdminEntity adminEntity);
+
+    int updateAdmin(AdminEntity adminEntity);
+
+    int deleteAdmin(String id);
 }

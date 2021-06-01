@@ -17,4 +17,8 @@ public interface AdminMapper {
     List<AdminEntity> selectEntity();
 
     int insertEntity(AdminEntity adminEntity);
+
+    int updateEntity(AdminEntity adminEntity);
+
+    int deleteEntityById(String id);
 }

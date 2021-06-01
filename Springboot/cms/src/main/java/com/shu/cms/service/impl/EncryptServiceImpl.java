@@ -1,6 +1,5 @@
 package com.shu.cms.service.impl;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
 import com.shu.cms.service.EncryptService;

@@ -1,12 +1,9 @@
 package com.shu.cms.entity;
+
 /*  
 *   AdminEntity
 *   @Author： Saenai
 */
-
-import com.shu.cms.service.EncryptService;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -17,8 +14,6 @@ public class AdminEntity {
     private String id;
     private String name;
     private String pw;
-    @Autowired
-    EncryptService encryptService;
 
     public String getId() {
         return this.id;
