@@ -10,8 +10,9 @@ B/S 架构，Java Web
 ### to-do
 
 1. 业务开发:
-   1. admin 完成 admin 的一个页面
-   2. 以 ↑ 为 template 奠基所有页面
+   1. 议定 records 表
+   2. 完成 File page \*2
+   3. Echarts
 2. UI 细节调整
    1. 带色彩的背景
    2. 图形元素的运用

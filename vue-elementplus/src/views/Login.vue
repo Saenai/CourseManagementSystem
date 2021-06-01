@@ -41,7 +41,6 @@
                     type="primary"
                     native-type="submit"
                     @click="loginFormSubmit('loginFormRef')"
-                    :round="true"
                     >登录</el-button
                   >
                 </el-tabs>

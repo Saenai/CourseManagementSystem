@@ -41,30 +41,28 @@ const routes = [
       },
     ],
   },
-  // {
-  //   path: "/student",
-  //   name: "StudentIndex",
-  //   component: () => import("v/Student/index.vue"),
-  //   children: [
-  //     {
-  //       // path: "/admin/AdminsManagement",
-  //       // name: "AdminsManagement",
-  //       // component: () => import("v/admin/AdminsManagement.vue"),
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: "/teacher",
-  //   name: "TeacherIndex",
-  //   component: () => import("v/Teacher/index.vue"),
-  //   // children: [
-  //   //   {
-  //   //     // path: "/admin/AdminsManagement",
-  //   //     // name: "AdminsManagement",
-  //   //     // component: () => import("v/admin/AdminsManagement.vue"),
-  //   //   },
-  //   // ],
-  // },
+  {
+    path: "/student",
+    name: "StudentIndex",
+    component: () => import("v/Student/index.vue"),
+    children: [
+      {
+        path: "/student/home",
+        name: "StudentHome",
+        component: () => import("v/Student/Home.vue"),
+      },
+      {
+        path: "/student/courseinfo",
+        name: "StudentCourseInfo",
+        component: () => import("v/Student/CourseInfo.vue"),
+      },
+      {
+        path: "/student/studentsmanage",
+        name: "StudentFileDownload",
+        component: () => import("v/Student/FileDownload.vue"),
+      },
+    ],
+  },
 ];
 
 // 以下のMethodは「children」が使用できないので、

@@ -12,4 +12,6 @@ public interface StudentService {
     int updateRow(StudentEntity entity);
 
     int deleteRow(String id);
+
+    StudentEntity getRowById(String id);
 }

@@ -157,7 +157,6 @@ export default {
   data() {
     let api = GLOBAL.apiBaseUrl;
     let apiLocal = api + "/admin";
-    let day = dayjs;
     return {
       state: this.$store.state,
       apiAdd: apiLocal + "/students",

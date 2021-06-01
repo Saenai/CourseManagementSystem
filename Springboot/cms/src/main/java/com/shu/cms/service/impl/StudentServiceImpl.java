@@ -39,4 +39,10 @@ public class StudentServiceImpl implements StudentService {
     public int deleteRow(String id) {
         return mapper.deleteEntityById(id);
     }
+
+    @Override
+    public StudentEntity getRowById(String id) {
+
+        return mapper.selectEntityById(id);
+    }
 }

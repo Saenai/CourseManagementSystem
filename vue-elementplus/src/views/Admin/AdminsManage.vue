@@ -178,7 +178,6 @@ export default {
             },
             body: row.id,
           }).then((res) => res.json());
-          console.log("Response:", Response);
           if (Response > 0) {
             this.$message({
               message: "数据删除成功",
