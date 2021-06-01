@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shu.cms.mapper.TeacherMapper">
+
+    <select id="selectEntityById" parameterType="String" resultType="com.shu.cms.entity.TeacherEntity">
+        SELECT * FROM course_management.teacher
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="selectEntity" resultType="com.shu.cms.entity.TeacherEntity">
+        SELECT * FROM course_management.teacher
+    </select>
+
+    <insert id="insertEntity" parameterType="com.shu.cms.entity.TeacherEntity">
+        INSERT INTO course_management.teacher VALUES(#{id},#{name},#{pw})
+    </insert>
+
+    <update id="updateEntity" parameterType="com.shu.cms.entity.TeacherEntity">
+        UPDATE course_management.teacher SET name=#{name},pw=#{pw}
+        <where>
+        id = #{id}
+        </where>
+    </update>
+
+    <delete id="deleteEntityById">
+        DELETE FROM course_management.teacher WHERE id = #{id}
+    </delete>
+
+</mapper>

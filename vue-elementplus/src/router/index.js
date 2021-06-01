@@ -29,6 +29,16 @@ const routes = [
         name: "AdminAdminsManage",
         component: () => import("v/Admin/AdminsManage.vue"),
       },
+      {
+        path: "/admin/studentsmanage",
+        name: "AdminStudentsManage",
+        component: () => import("v/Admin/StudentsManage.vue"),
+      },
+      {
+        path: "/admin/teachersmanage",
+        name: "AdminTeachersManage",
+        component: () => import("v/Admin/TeachersManage.vue"),
+      },
     ],
   },
   // {

@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shu.cms.mapper.StudentMapper">
+
+    <select id="selectEntityById" parameterType="String" resultType="com.shu.cms.entity.StudentEntity">
+        SELECT * FROM course_management.student
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="selectEntity" resultType="com.shu.cms.entity.StudentEntity">
+        SELECT * FROM course_management.student
+    </select>
+
+    <insert id="insertEntity" parameterType="com.shu.cms.entity.StudentEntity">
+        INSERT INTO course_management.student VALUES(#{id},#{name},#{pw},#{dateA},#{dateB})
+    </insert>
+
+    <update id="updateEntity" parameterType="com.shu.cms.entity.StudentEntity">
+        UPDATE course_management.student SET name=#{name},pw=#{pw},dateA=#{dateA},dateB=#{dateB}
+        <where>
+        id = #{id}
+        </where>
+    </update>
+
+    <delete id="deleteEntityById">
+        DELETE FROM course_management.student WHERE id = #{id}
+    </delete>
+
+</mapper>

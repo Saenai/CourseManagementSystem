@@ -103,7 +103,10 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="handleEditClose()">取 消</el-button>
-        <el-button type="primary" @click="submitEditForm('editFormRef')"
+        <el-button
+          type="primary"
+          native-type="submit"
+          @click="submitEditForm('editFormRef')"
           >编 辑</el-button
         >
       </span>
@@ -118,9 +121,12 @@ export default {
   name: "AdminAdminsManage",
   components: {},
   data() {
+    let api = GLOBAL.apiBaseUrl;
+    let apiLocal = api + "/admin";
     return {
       state: this.$store.state,
-      api: GLOBAL.apiBaseUrl,
+      apiAdd: apiLocal + "/admins",
+      apiDelete: apiLocal + "/admins/delete",
       tableData: [{}],
       dialogVisible: false,
       dialogEditVisible: false,
@@ -146,7 +152,7 @@ export default {
     ...mapMutations([]),
     ...mapActions([]),
     async getTableData() {
-      let Response = await fetch(this.api + "/admin/admins", {
+      let Response = await fetch(this.apiAdd, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -164,7 +170,7 @@ export default {
     handleDelete(index, row) {
       this.$confirm("确认删除？")
         .then(async () => {
-          const Response = await fetch(this.api + "/admin/admins/delete", {
+          const Response = await fetch(this.apiDelete, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -191,8 +197,10 @@ export default {
     handleClose(done) {
       this.$confirm("确认关闭？")
         .then(() => {
-          this.$refs["addFormRef"].resetFields();
           this.dialogVisible = false;
+          this.dialogEditVisible = false;
+          this.$refs["addFormRef"].resetFields();
+          this.$refs["editFormRef"].resetFields();
           done();
         })
         .catch(() => {});
@@ -210,7 +218,7 @@ export default {
     submitForm(formRef) {
       this.$refs[formRef].validate(async (valid) => {
         if (valid) {
-          const addResponse = await fetch(this.api + "/admin/admins", {
+          const addResponse = await fetch(this.apiAdd, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -242,7 +250,7 @@ export default {
     submitEditForm(formRef) {
       this.$refs[formRef].validate(async (valid) => {
         if (valid) {
-          const Response = await fetch(this.api + "/admin/admins", {
+          const Response = await fetch(this.apiAdd, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",

@@ -44,7 +44,6 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public int deleteAdmin(String id) {
-        System.out.println("**********************" + id);
         return adminMapper.deleteEntityById(id);
     }
 

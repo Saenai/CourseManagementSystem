@@ -59,8 +59,8 @@ export default {
       menuRoutes: {
         0: "/admin/home",
         1: "/admin/adminsmanage",
-        2: "/admin/studentsmanage",
-        3: "/admin/teachersmanage",
+        2: "/admin/teachersmanage",
+        3: "/admin/studentsmanage",
       },
     };
   },
