@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shu.cms.mapper.RecordsMapper">
+
+    <select id="selectEntityById" parameterType="String" resultType="com.shu.cms.entity.RecordsEntity">
+        SELECT * FROM course_management.records
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <select id="selectEntity" resultType="com.shu.cms.entity.RecordsEntity">
+        SELECT * FROM course_management.records
+    </select>
+
+    <insert id="insertEntity" parameterType="com.shu.cms.entity.RecordsEntity">
+        INSERT INTO course_management.records VALUES(#{id},#{w1},#{w2},#{w3},#{w4},#{w5},#{w6},#{w7},#{w8},#{w9},#{w10},#{score},#{final_score})
+    </insert>
+
+    <update id="updateEntity" parameterType="com.shu.cms.entity.RecordsEntity">
+        UPDATE course_management.records SET id=#{id},w1=#{w1},w2=#{w2},w3=#{w3},w4=#{w4},w5=#{w5},w6=#{w6},w7=#{w7},w8=#{w8},w9=#{w9},w10=#{w10},score=#{score},final_score=#{final_score}
+        <where>
+        id = #{id}
+        </where>
+    </update>
+
+    <delete id="deleteEntityById">
+        DELETE FROM course_management.records WHERE id = #{id}
+    </delete>
+
+</mapper>

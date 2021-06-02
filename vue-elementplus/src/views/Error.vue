@@ -1,31 +1,40 @@
 <template>
-  <div class="errorpage">
-    <h1>Error Page</h1>
-    <h2>{{ error_code }}</h2>
-    <el-button @click="close()">关闭</el-button>
-    <!-- Use for test fetch with Authorization Headers -->
-    <!-- <el-button class="loginButton" type="primary" @click="testFetch()"
+  <el-container>
+    <el-header></el-header>
+    <el-main>
+      <el-result icon="error" title="错误" :subTitle="subtitle">
+        <template #extra>
+          <el-button type="primary" size="medium" @click="close()"
+            >回到登录页面</el-button
+          >
+        </template>
+      </el-result>
+      <!-- Use for test fetch with Authorization Headers -->
+      <!-- <el-button class="loginButton" type="primary" @click="testFetch()"
       >Test Fetch</el-button
     > -->
-  </div>
+    </el-main>
+  </el-container>
 </template>
 
 <script type="text/javascript">
 import GLOBAL from "@/config/global_variable.js";
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "ErrorPage",
   data() {
     return {
       api: GLOBAL.apiBaseUrl,
-      error_code: sessionStorage.getItem("error_code"),
+      subtitle: "Error_code : " + sessionStorage.getItem("error_code"),
     };
   },
   components: {},
   methods: {
     ...mapGetters(["getStore"]),
+    ...mapMutations(["clearLogin"]),
     close() {
       sessionStorage.removeItem("error_code");
+      this.clearLogin();
       this.$router.push("/");
     },
     // Use for test fetch with Authorization Headers

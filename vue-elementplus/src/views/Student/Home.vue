@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-footer></el-footer>
+    <el-header></el-header>
     <el-main direction="vertical">
       <el-avatar :size="256" :src="circleUrl"></el-avatar>
       <h2>{{ state.name }}</h2>
@@ -15,6 +15,7 @@
 <script type="text/javascript">
 import GLOBAL from "@/config/global_variable";
 import { mapGetters, mapMutations, mapActions } from "vuex";
+var dayjs = require("dayjs");
 export default {
   name: "StudentHome",
   components: {},
@@ -31,10 +32,12 @@ export default {
   },
   mounted() {
     var date = new Date();
-    this.today =
-      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    this.today = dayjs(
+      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+    ).format("YYYY-MM-DD");
 
     this.init();
+    this.validateDate();
   },
   watch: {},
   computed: {},
@@ -53,6 +56,29 @@ export default {
       }).then((res) => res.json());
       this.dateA = Response.dateA;
       this.dateB = Response.dateB;
+    },
+    async validateDate() {
+      const Response = await fetch(this.api + "/student/home", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: this.getStore().Authorization,
+        },
+        body: this.getStore().id,
+      }).then((res) => res.json());
+      this.dateA = Response.dateA;
+      this.dateB = Response.dateB;
+
+      console.log("*********thsi.today:", this.today);
+      console.log("*********this.dateA:", this.dateA);
+      if (this.today < this.dateA || this.today > this.dateB) {
+        this.$message({
+          message: "权限逾期",
+          type: "error",
+        });
+        sessionStorage.setItem("error_code", "E03");
+        this.$router.push("/error");
+      }
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-footer></el-footer>
+    <el-header></el-header>
     <el-main direction="vertical">
       <el-avatar :size="256" :src="circleUrl"></el-avatar>
       <h2>{{ state.name }}</h2>

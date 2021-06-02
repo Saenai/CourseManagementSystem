@@ -1,12 +1,12 @@
 <template>
   <div custom-class="loginpage">
-    <el-row type="flex" class="row-bg" justify="center">
-      <el-col :span="10">
-        <el-container>
-          <el-main>
+    <el-container>
+      <el-main id="pageMain">
+        <el-row id="aa" type="flex" class="row-bg" justify="center">
+          <el-col :span="10">
             <el-space warp direction="vertical" :size="32">
               <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-              <h1>课程管理系统</h1>
+              <h2 id="title">课程管理系统</h2>
               <el-form
                 :model="loginFormModel"
                 status-icon
@@ -46,10 +46,10 @@
                 </el-tabs>
               </el-form>
             </el-space>
-          </el-main>
-        </el-container>
-      </el-col>
-    </el-row>
+          </el-col>
+        </el-row>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
@@ -130,5 +130,19 @@ export default {
 <style lang="scss" scoped>
 :deep(.loginButton) {
   width: 200px;
+}
+:deep(.el-container) {
+  height: 100%;
+}
+:deep(#pageMain) {
+  display: flex;
+  flex-direction: column;
+}
+:deep(#aa) {
+  flex: 1;
+  align-content: center;
+}
+:deep(#title) {
+  margin-bottom: 16px;
 }
 </style>
