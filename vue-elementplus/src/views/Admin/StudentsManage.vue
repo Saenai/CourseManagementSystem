@@ -183,11 +183,11 @@ export default {
     this.getTableData();
   },
   watch: {
-    value1(newValue1, oldValue1) {
+    value1(newValue1) {
       this.addFormModel.dateA = dayjs(newValue1[0]).format("YYYY-MM-DD");
       this.addFormModel.dateB = dayjs(newValue1[1]).format("YYYY-MM-DD");
     },
-    value2(newValue2, oldValue2) {
+    value2(newValue2) {
       this.editFormModel.dateA = dayjs(newValue2[0]).format("YYYY-MM-DD");
       this.editFormModel.dateB = dayjs(newValue2[1]).format("YYYY-MM-DD");
     },

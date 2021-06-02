@@ -1,10 +1,13 @@
 <template>
   <el-container>
-    <el-header></el-header>
-    <el-main direction="vertical">
-      <el-avatar :size="256" :src="circleUrl"></el-avatar>
-      <h2>{{ state.name }}</h2>
-      <h4>用户类型：管理员</h4>
+    <el-main id="pageMain" direction="vertical">
+      <el-row id="aa">
+        <el-col :span="24">
+          <el-avatar :size="256" :src="circleUrl"></el-avatar>
+          <h2>{{ state.name }}</h2>
+          <h4>用户类型：管理员</h4>
+        </el-col>
+      </el-row>
     </el-main>
   </el-container>
 </template>
@@ -32,4 +35,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(#pageMain) {
+  display: flex;
+  flex-direction: column;
+}
+:deep(#aa) {
+  flex: 1;
+  align-content: center;
+}
+</style>

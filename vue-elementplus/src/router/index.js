@@ -57,9 +57,41 @@ const routes = [
         component: () => import("v/Student/CourseInfo.vue"),
       },
       {
-        path: "/student/studentsmanage",
+        path: "/student/filedownload",
         name: "StudentFileDownload",
         component: () => import("v/Student/FileDownload.vue"),
+      },
+    ],
+  },
+  {
+    path: "/teacher",
+    name: "TeacherIndex",
+    component: () => import("v/Teacher/index.vue"),
+    children: [
+      {
+        path: "/teacher/home",
+        name: "TeacherHome",
+        component: () => import("v/Teacher/Home.vue"),
+      },
+      {
+        path: "/teacher/classmanage",
+        name: "TeacherClassManage",
+        component: () => import("v/Teacher/ClassManage.vue"),
+      },
+      {
+        path: "/teacher/courseinfo",
+        name: "TeacherCourseInfo",
+        component: () => import("v/Teacher/CourseInfo.vue"),
+      },
+      {
+        path: "/teacher/dataanalyse",
+        name: "TeacherDataAnalyse",
+        component: () => import("v/Teacher/DataAnalyse.vue"),
+      },
+      {
+        path: "/teacher/fileupload",
+        name: "TeacherFileUpload",
+        component: () => import("v/Teacher/FileUpload.vue"),
       },
     ],
   },

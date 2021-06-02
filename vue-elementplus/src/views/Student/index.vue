@@ -23,11 +23,11 @@
                 <template #title>Home</template>
               </el-menu-item>
               <el-menu-item :route="menuRoutes[1]" index="2">
-                <i class="el-icon-s-custom"></i>
+                <i class="el-icon-info"></i>
                 <template #title>课程信息</template>
               </el-menu-item>
               <el-menu-item :route="menuRoutes[2]" index="3">
-                <i class="el-icon-user-solid"></i>
+                <i class="el-icon-document"></i>
                 <template #title>资料下载</template>
               </el-menu-item>
             </el-menu></el-aside

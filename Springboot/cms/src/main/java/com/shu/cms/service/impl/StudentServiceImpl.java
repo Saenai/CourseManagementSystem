@@ -45,4 +45,9 @@ public class StudentServiceImpl implements StudentService {
 
         return mapper.selectEntityById(id);
     }
+
+    @Override
+    public List<StudentEntity> getRowsOfIdName() {
+        return mapper.selectIdName();
+    }
 }

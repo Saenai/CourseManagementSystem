@@ -1,14 +1,17 @@
 <template>
   <el-container>
-    <el-header></el-header>
-    <el-main>
-      <el-result icon="error" title="错误" :subTitle="subtitle">
-        <template #extra>
-          <el-button type="primary" size="medium" @click="close()"
-            >回到登录页面</el-button
-          >
-        </template>
-      </el-result>
+    <el-main id="pageMain" direction="vertical">
+      <el-row id="aa">
+        <el-col>
+          <el-result icon="error" title="错误" :subTitle="subtitle">
+            <template #extra>
+              <el-button type="primary" size="medium" @click="close()"
+                >回到登录页面</el-button
+              >
+            </template>
+          </el-result>
+        </el-col>
+      </el-row>
       <!-- Use for test fetch with Authorization Headers -->
       <!-- <el-button class="loginButton" type="primary" @click="testFetch()"
       >Test Fetch</el-button
@@ -54,4 +57,13 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="scss" scoped>
+:deep(#pageMain) {
+  display: flex;
+  flex-direction: column;
+}
+:deep(#aa) {
+  flex: 1;
+  align-content: center;
+}
+</style>

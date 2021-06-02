@@ -10,10 +10,8 @@ B/S 架构，Java Web
 ### to-do
 
 1. 业务开发:
-   1. 议定 records 表
-   2. student 表 trigger
-   3. 完成 File page \*2
-   4. Echarts
+   1. 完成 File page \*2
+   2. Echarts
 2. UI 细节调整
    1. 带色彩的背景
    2. 图形元素的运用

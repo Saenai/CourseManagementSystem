@@ -1,13 +1,16 @@
 <template>
   <el-container>
-    <el-header></el-header>
-    <el-main direction="vertical">
-      <el-avatar :size="256" :src="circleUrl"></el-avatar>
-      <h2>{{ state.name }}</h2>
-      <h4>用户类型：学生</h4>
-      <h4>授权开始日：{{ dateA }}</h4>
-      <h4>授权终止日：{{ dateB }}</h4>
-      <h4>今日：{{ today }}</h4>
+    <el-main id="pageMain" direction="vertical">
+      <el-row id="aa">
+        <el-col>
+          <el-avatar :size="256" :src="circleUrl"></el-avatar>
+          <h2>{{ state.name }}</h2>
+          <h4>用户类型：学生</h4>
+          <h4>授权开始日：{{ dateA }}</h4>
+          <h4>授权终止日：{{ dateB }}</h4>
+          <h4>今日：{{ today }}</h4>
+        </el-col>
+      </el-row>
     </el-main>
   </el-container>
 </template>
@@ -84,4 +87,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(#pageMain) {
+  display: flex;
+  flex-direction: column;
+}
+:deep(#aa) {
+  flex: 1;
+  align-content: center;
+}
+</style>

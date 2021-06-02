@@ -14,4 +14,6 @@ public interface StudentService {
     int deleteRow(String id);
 
     StudentEntity getRowById(String id);
+
+    List<StudentEntity> getRowsOfIdName();
 }

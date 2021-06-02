@@ -30,4 +30,8 @@
         DELETE FROM course_management.student WHERE id = #{id}
     </delete>
 
+    <select id="selectIdName" resultType="com.shu.cms.entity.StudentEntity">
+        SELECT id,name FROM course_management.student
+    </select>
+
 </mapper>

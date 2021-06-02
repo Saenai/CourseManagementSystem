@@ -17,4 +17,6 @@ public interface StudentMapper {
     int updateEntity(StudentEntity entity);
 
     int deleteEntityById(String id);
+
+    List<StudentEntity> selectIdName();
 }
