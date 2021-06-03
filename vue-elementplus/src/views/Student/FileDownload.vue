@@ -1,8 +1,33 @@
 <template>
   <el-container id="pageContainer">
     <el-main id="pageMain" direction="vertical">
-      <el-row id="cc">
-        <el-col :span="8"></el-col>
+      <el-row>
+        <el-col :span="24"
+          ><el-table stripe :data="DATA" style="width: 100%" height="100%">
+            <el-table-column type="index" align="center" width="48px">
+            </el-table-column>
+            <el-table-column label="文件名">
+              <template #default="scope">
+                <span>{{ scope.row.originname }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column width="150px" label="文件大小">
+              <template #default="scope">
+                <span>{{ scope.row.size }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column width="85px" align="center" label="操作">
+              <template #default="scope">
+                <el-button
+                  size="mini"
+                  type="primary"
+                  @click="handleDownload(scope.$index, scope.row)"
+                  >下载</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-col>
       </el-row>
     </el-main>
   </el-container>
@@ -11,87 +36,110 @@
 <script type="text/javascript">
 import GLOBAL from "@/config/global_variable";
 import { mapGetters, mapMutations, mapActions } from "vuex";
+// var _ = require("lodash");
+const api = GLOBAL.apiBaseUrl;
+const apiRole = api + "/teacher";
+const apiLocal = apiRole + "/fileupload";
 export default {
-  name: "StudentFileDownload",
+  name: "TeacherFileUpload",
   components: {},
   data() {
     return {
       state: this.$store.state,
-      api: GLOBAL.apiBaseUrl,
-      circleUrl:
-        "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-      onshowper: 50,
-      onshowper1: 50,
-      onshowper2: 50,
-      progress_status: "",
-      progress_status1: "",
-      progress_status2: "",
+      DATA: [{}],
+      apiUpload: apiLocal + "/up",
     };
   },
   mounted() {
-    var date = new Date();
-    this.today =
-      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-
     this.init();
   },
-  watch: {
-    onshowper(nu) {
-      if (nu == 100) this.progress_status = "success";
-    },
-    onshowper1(nu) {
-      if (nu == 100) this.progress_status1 = "success";
-    },
-    onshowper2(nu) {
-      if (nu == 100) this.progress_status2 = "success";
-    },
-  },
+  watch: {},
   computed: {},
   methods: {
     ...mapGetters(["getStore"]),
     ...mapMutations([]),
     ...mapActions([]),
+
     async init() {
-      const Response = await fetch(this.api + "/student/courseinfo", {
-        method: "POST",
+      // Get Data
+      const Response = await fetch(apiLocal, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: this.getStore().Authorization,
         },
-        body: this.getStore().id,
       }).then((res) => res.json());
-      console.log("*********Response:", Response);
-      var sum = 0;
-      for (let i = 1; i <= 10; ++i) {
-        sum += Response["w" + i];
+
+      function getFileSize(fileByte) {
+        var fileSizeByte = fileByte;
+        var fileSizeMsg = "";
+        if (fileSizeByte < 1048576)
+          fileSizeMsg = (fileSizeByte / 1024).toFixed(2) + "KB";
+        else if (fileSizeByte == 1048576) fileSizeMsg = "1MB";
+        else if (fileSizeByte > 1048576 && fileSizeByte < 1073741824)
+          fileSizeMsg = (fileSizeByte / (1024 * 1024)).toFixed(2) + "MB";
+        else if (fileSizeByte > 1048576 && fileSizeByte == 1073741824)
+          fileSizeMsg = "1GB";
+        else if (fileSizeByte > 1073741824 && fileSizeByte < 1099511627776)
+          fileSizeMsg = (fileSizeByte / (1024 * 1024 * 1024)).toFixed(2) + "GB";
+        else fileSizeMsg = "文件超过1TB";
+        return fileSizeMsg;
       }
-      this.onshowper = sum * 10;
-      this.onshowper1 = Response.score;
-      this.onshowper2 = Response.final_score;
+
+      Response.forEach((key) => {
+        key.size = getFileSize(key.size);
+      });
+
+      this.DATA = Response;
+    },
+
+    async handleDownload(index, row) {
+      const Response = await fetch(apiLocal + "/down", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          responseType: "blob",
+          Authorization: this.getStore().Authorization,
+        },
+        body: row.originname,
+      })
+        .then((res) => res.blob())
+        .then((blob) => {
+          let bl = new Blob([blob], { type: "octet/stream" });
+          let filename = row.originname;
+          var link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = filename;
+          link.click();
+          window.URL.revokeObjectURL(link.href);
+        });
+      this.$message({
+        message: "开始下载…",
+        type: "warning",
+      });
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-:deep(#pageFooter) {
-  background-color: #ffffff;
-  text-align: right;
-  line-height: 60px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
-}
 :deep(#pageMain) {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
 }
-:deep(#aa) {
-  flex: 1;
-  align-content: center;
+:deep(#tabletitle) {
+  text-align: left;
 }
-:deep(#cc) {
+:deep(.el-row) {
   flex: 1;
-  align-content: center;
+}
+
+:deep(#pageFooter) {
+  background-color: #ffffff;
+  text-align: right;
+  line-height: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
 }
 </style>

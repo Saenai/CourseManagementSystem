@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shu.cms.mapper.FileMapper">
+
+    <select id="selectEntityById" parameterType="String" resultType="com.shu.cms.entity.FileEntity">
+        SELECT * FROM course_management.file
+        <where>
+            originname = #{id}
+        </where>
+    </select>
+
+    <select id="selectEntity" resultType="com.shu.cms.entity.FileEntity">
+        SELECT * FROM course_management.file
+    </select>
+    <select id="selectEntityWithoutPath" resultType="com.shu.cms.entity.FileEntity">
+        SELECT originname,size FROM course_management.file
+    </select>
+
+    <insert id="insertEntity" parameterType="com.shu.cms.entity.FileEntity">
+        INSERT INTO course_management.file VALUES(#{originname},#{serverpath},#{size})
+    </insert>
+
+    <delete id="deleteEntityById">
+        DELETE FROM course_management.file WHERE originname = #{id}
+    </delete>
+
+</mapper>

@@ -2,11 +2,7 @@
   <el-container>
     <el-main id="pageMain">
       <el-table stripe :data="tableData" style="width: 100%" height="100%">
-        <el-table-column label="No." width="48px">
-          <template #default="scope">
-            <span>{{ scope.$index }}</span>
-          </template>
-        </el-table-column>
+        <el-table-column type="index" width="50"> </el-table-column>
         <el-table-column label="ID">
           <template #default="scope">
             <span>{{ scope.row.id }}</span>
