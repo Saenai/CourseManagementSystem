@@ -5,7 +5,7 @@
 </template>
 <script></script>
 
-<style>
+<style lang="scss">
 body {
   margin: 0;
   height: 100%;
@@ -35,5 +35,15 @@ body {
 }
 #app > div > div {
   height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 </style>

@@ -15,6 +15,12 @@
         SELECT * FROM course_management.records
     </select>
 
+    <select id="selectEntityWithName" resultType="com.shu.cms.entity.RecordsEntityEx">
+        SELECT A.*,B.name FROM course_management.records A,course_management.student B
+        <where> A.id=B.id
+        </where>
+    </select>
+
     <insert id="insertEntity" parameterType="com.shu.cms.entity.RecordsEntity">
         INSERT INTO course_management.records VALUES(#{id},#{w1},#{w2},#{w3},#{w4},#{w5},#{w6},#{w7},#{w8},#{w9},#{w10},#{score},#{final_score})
     </insert>

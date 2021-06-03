@@ -3,6 +3,7 @@ package com.shu.cms.service.impl;
 import java.util.List;
 
 import com.shu.cms.entity.RecordsEntity;
+import com.shu.cms.entity.RecordsEntityEx;
 import com.shu.cms.mapper.RecordsMapper;
 import com.shu.cms.service.RecordsService;
 
@@ -23,6 +24,11 @@ public class RecordsServiceImpl implements RecordsService {
     @Override
     public List<RecordsEntity> getRows() {
         return mapper.selectEntity();
+    }
+
+    @Override
+    public List<RecordsEntityEx> getRowsWithName() {
+        return mapper.selectEntityWithName();
     }
 
     @Override

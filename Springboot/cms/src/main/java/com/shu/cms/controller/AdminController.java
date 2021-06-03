@@ -86,7 +86,6 @@ public class AdminController {
     @ResponseStatus(HttpStatus.OK)
     public List<StudentEntity> GetStudents(@RequestHeader("Authorization") String token) throws DatabaseException {
         if (tokenService.TokenVerify(token) == true) {
-            System.out.println("*****************" + studentService.getRows());
             return studentService.getRows();
         } else {
             throw new DatabaseException();

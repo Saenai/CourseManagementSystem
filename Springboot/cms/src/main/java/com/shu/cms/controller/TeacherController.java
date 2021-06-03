@@ -3,6 +3,7 @@ package com.shu.cms.controller;
 import java.util.List;
 
 import com.shu.cms.entity.RecordsEntity;
+import com.shu.cms.entity.RecordsEntityEx;
 import com.shu.cms.entity.StudentEntity;
 import com.shu.cms.exception.DatabaseException;
 import com.shu.cms.service.RecordsService;
@@ -48,9 +49,10 @@ public class TeacherController {
 
     @GetMapping("/classmanage")
     @ResponseStatus(HttpStatus.OK)
-    public List<RecordsEntity> GetRecordss(@RequestHeader("Authorization") String token) throws DatabaseException {
+    public List<RecordsEntityEx> GetRecordsWithName(@RequestHeader("Authorization") String token)
+            throws DatabaseException {
         if (tokenService.TokenVerify(token) == true) {
-            return recordsService.getRows();
+            return recordsService.getRowsWithName();
         } else {
             throw new DatabaseException();
         }
@@ -88,5 +90,5 @@ public class TeacherController {
             throw new DatabaseException();
         }
     };
-    
+
 }

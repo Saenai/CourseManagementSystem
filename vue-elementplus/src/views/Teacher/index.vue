@@ -62,7 +62,7 @@ export default {
         0: "/teacher/home",
         1: "/teacher/courseinfo",
         2: "/teacher/classmanage",
-        3: "/teacher/dataanlyse",
+        3: "/teacher/dataanalyse",
         4: "/teacher/fileupload",
       },
     };

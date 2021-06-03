@@ -8,116 +8,124 @@
         style="width: 100%"
         height="100%"
       >
-        <el-table-column align="center" label="No." width="48px">
-          <template #default="scope">
-            <span>{{ scope.$index }}</span>
-          </template>
+        <el-table-column type="index" align="center" width="40px">
         </el-table-column>
-        <el-table-column align="center" label="ID">
-          <template #default="scope">
-            <span>{{ scope.row.id }}</span>
-          </template>
+        <el-table-column label="出勤记录" align="center">
+          <el-table-column align="center" label="ID">
+            <template #default="scope">
+              <span>{{ scope.row.id }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column align="center" label="姓名">
+            <template #default="scope">
+              <span>{{ scope.row.name }}</span>
+            </template>
+          </el-table-column>
         </el-table-column>
-        <el-table-column align="center" label="第1周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w1"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第2周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w2"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第3周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w3"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第4周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w4"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第5周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w5"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第6周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w6"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第7周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w7"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第8周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w8"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第9周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w9"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="第10周"
-          ><template #default="scope">
-            <el-checkbox
-              v-model="scope.row.w10"
-              :true-label="1"
-              :false-label="0"
-              disabled
-            ></el-checkbox> </template
-        ></el-table-column>
-        <el-table-column align="center" label="平时成绩"
-          ><template #default="scope"
-            ><span>{{ scope.row.score }}</span></template
-          ></el-table-column
-        >
-        <el-table-column align="center" label="期末成绩"
-          ><template #default="scope"
-            ><span>{{ scope.row.final_score }}</span></template
-          ></el-table-column
-        >
+        <el-table-column label="出勤记录" align="center">
+          <el-table-column width="40px" align="center" label="第1周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w1"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第2周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w2"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第3周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w3"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第4周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w4"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第5周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w5"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第6周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w6"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第7周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w7"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第8周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w8"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第9周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w9"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+          <el-table-column width="40px" align="center" label="第10周"
+            ><template #default="scope">
+              <el-checkbox
+                v-model="scope.row.w10"
+                :true-label="1"
+                :false-label="0"
+                disabled
+              ></el-checkbox> </template
+          ></el-table-column>
+        </el-table-column>
+        <el-table-column label="成绩" align="center">
+          <el-table-column width="50px" align="center" label="平时成绩"
+            ><template #default="scope"
+              ><span>{{ scope.row.score }}</span></template
+            ></el-table-column
+          >
+          <el-table-column width="50px" align="center" label="期末成绩"
+            ><template #default="scope"
+              ><span>{{ scope.row.final_score }}</span></template
+            ></el-table-column
+          >
+        </el-table-column>
         <el-table-column width="85px" align="center" label="操作">
           <template #default="scope">
             <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
@@ -146,6 +154,9 @@
       >
         <el-form-item label="ID" prop="id">
           <el-input v-model="editFormModel.id" :disabled="true">></el-input>
+        </el-form-item>
+        <el-form-item label="姓名" prop="name">
+          <el-input v-model="editFormModel.name" :disabled="true">></el-input>
         </el-form-item>
         <el-form-item label="出勤" prop="wa">
           <el-checkbox
@@ -239,12 +250,12 @@
 <script type="text/javascript">
 import GLOBAL from "@/config/global_variable";
 import { mapGetters, mapMutations, mapActions } from "vuex";
+var api = GLOBAL.apiBaseUrl;
+var apiLocal = api + "/teacher/classmanage";
 export default {
   name: "TeacherClassManage",
   components: {},
   data() {
-    let api = GLOBAL.apiBaseUrl;
-    let apiLocal = api + "/teacher/classmanage";
     return {
       state: this.$store.state,
       apiLocal: apiLocal,
@@ -258,6 +269,7 @@ export default {
       },
       editFormModel: {
         id: "",
+        name: "",
         w1: 0,
         w2: 0,
         w3: 0,
@@ -290,22 +302,12 @@ export default {
         },
       }).then((res) => res.json());
       this.tableData = Response;
-      console.log("*********Response:", Response);
     },
     handleEdit(index, row) {
       this.editFormModel = row;
       this.dialogEditVisible = true;
     },
 
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then(() => {
-          this.dialogEditVisible = false;
-          this.$refs["editFormRef"].resetFields();
-          done();
-        })
-        .catch(() => {});
-    },
     handleEditClose(done) {
       this.$confirm("确认关闭？")
         .then(() => {
@@ -328,9 +330,10 @@ export default {
             body: JSON.stringify(this.editFormModel),
           }).then((res) => res.json());
           this.dialogEditVisible = false;
-          this.$refs["editFormRef"].resetFields();
+          this.$refs[formRef].resetFields();
           this.editFormModel = {
             id: "",
+            name: "",
             w1: "0",
             w2: "0",
             w3: "0",
